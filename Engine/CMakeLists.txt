@@ -3,7 +3,7 @@ CMAKE_POLICY(SET CMP0072 NEW)
 
 PROJECT(Engine VERSION 0.0.1)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
@@ -17,7 +17,26 @@ FIND_LIBRARY(GLFW NAMES "glfw3" PATHS ${CMAKE_SOURCE_DIR}/lib REQUIRED)
 FIND_LIBRARY(GLM NAMES "glm" PATHS ${CMAKE_SOURCE_DIR}/lib REQUIRED)
 FIND_LIBRARY(ASSIMP NAMES "assimp-vc143-mtd" PATHS ${CMAKE_SOURCE_DIR}/lib REQUIRED)
 
-SET(SOURCE "src/main.cpp")
+SET(FILESYSTEM 
+    "src/Backend/FileSystem/FileReader.h"
+    "src/Backend/FileSystem/FileReader.cpp"
+)
+
+SET(MESH 
+    "src/Backend/Mesh/Primitives/Primitives.h"
+    "src/Backend/Mesh/Primitives/Sphere.h"
+    "src/Backend/Mesh/Primitives/Sphere.cpp"
+    "src/Backend/Mesh/Mesh.h"
+    "src/Backend/Mesh/MeshGeneration.h"
+    "src/Backend/Mesh/MeshGeneration.cpp"
+)
+
+SET(SOURCE 
+    ${FILESYSTEM}
+    ${MESH}
+    "src/main.cpp"
+)
+
 ADD_EXECUTABLE(${PROJECT_NAME} ${SOURCE})
 
 SET(LIBS GLAD STB_IMAGE ${GLM} ${ASSIMP} ${GLFW} opengl32)
