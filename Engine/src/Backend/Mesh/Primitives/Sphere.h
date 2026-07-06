@@ -14,5 +14,5 @@ private:
 
 public:
     Sphere(float radius, unsigned int segments, unsigned int rings) : radius(radius), segments(segments), rings(rings) {}
-    const MeshData ConstructMesh(const VertexConfig& vertexConfig);
+    const MeshData ConstructMesh(const VertexConfig &vertexConfig);
 };

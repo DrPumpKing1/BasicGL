@@ -27,13 +27,22 @@ SET(MESH
     "src/Backend/Mesh/Primitives/Sphere.h"
     "src/Backend/Mesh/Primitives/Sphere.cpp"
     "src/Backend/Mesh/Mesh.h"
-    "src/Backend/Mesh/MeshGeneration.h"
-    "src/Backend/Mesh/MeshGeneration.cpp"
+    "src/Backend/Mesh/Mesh.cpp"
+)
+
+SET(SHADER
+    "src/Backend/Shader/Shader.h"
+    "src/Backend/Shader/Shader.cpp"
+    "src/Backend/Shader/ShaderProgram.h"
+    "src/Backend/Shader/ShaderProgram.cpp"
+    "src/Backend/Shader/ShaderUniformTable.h"
+    "src/Backend/Shader/ShaderUniformTable.cpp"
 )
 
 SET(SOURCE 
     ${FILESYSTEM}
     ${MESH}
+    ${SHADER}
     "src/main.cpp"
 )
 

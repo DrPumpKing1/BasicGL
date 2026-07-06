@@ -1,6 +1,6 @@
-#include "MeshGeneration.h"
+#include "Mesh.h"
 
-MeshHandle MeshGeneration::Generate(const MeshData& mesh) {
+MeshHandle Mesh::Generate(const MeshData &mesh) {
     unsigned int VBO, VAO, EBO;
     // Buffers Generation
     glGenVertexArrays(1, &VAO);
@@ -41,7 +41,7 @@ MeshHandle MeshGeneration::Generate(const MeshData& mesh) {
     return MeshHandle { VBO, VAO, EBO };
 }
 
-void MeshGeneration::Destroy(const MeshHandle& handle) {
+void Mesh::Destroy(const MeshHandle &handle) {
     glDeleteVertexArrays(1, &handle.VAO);
     glDeleteBuffers(1, &handle.VBO);
     glDeleteBuffers(1, &handle.EBO);

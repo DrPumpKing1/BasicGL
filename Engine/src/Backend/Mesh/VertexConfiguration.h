@@ -41,7 +41,7 @@ const VertexConfig Vertex3DTangent = {
 
 class VertexConfigUtils {
 public:
-    static void SetAttributeData(std::vector<AttributeData>& attribData, VertexConfig vertexConfig) {
+    static void SetAttributeData(std::vector<AttributeData> &attribData, VertexConfig vertexConfig) {
         int length = vertexConfig.size();
         attribData = std::vector<AttributeData>(vertexConfig.size());
         for(int i = 0; i < length; i++) {

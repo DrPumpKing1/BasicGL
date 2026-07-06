@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <glad/gl.h>
 
 struct AttributeData {
     unsigned int components;
@@ -15,4 +16,11 @@ struct MeshData {
 
 struct MeshHandle {
     unsigned int VBO, VAO, EBO;
+};
+
+class Mesh
+{
+public:
+    static MeshHandle Generate(const MeshData &mesh);
+    static void Destroy(const MeshHandle &handle);
 };

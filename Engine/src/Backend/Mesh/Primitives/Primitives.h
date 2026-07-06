@@ -4,7 +4,6 @@
 #include <concepts>
 
 #include "../Mesh.h"
-#include "../MeshGeneration.h"
 #include "../VertexConfiguration.h"
 
 template <typename ShapeT>
