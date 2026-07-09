@@ -38,11 +38,20 @@ MeshHandle Mesh::Generate(const MeshData &mesh) {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
-    return MeshHandle { VBO, VAO, EBO };
+    DrawInfo drawInfo { mesh.indices.size() };
+    return MeshHandle { VBO, VAO, EBO, drawInfo };
 }
 
 void Mesh::Destroy(const MeshHandle &handle) {
     glDeleteVertexArrays(1, &handle.VAO);
     glDeleteBuffers(1, &handle.VBO);
     glDeleteBuffers(1, &handle.EBO);
+}
+
+void Mesh::Bind(const MeshHandle &handle) {
+    glBindVertexArray(handle.VAO);
+}
+
+void Mesh::Unbind() {
+    glBindVertexArray(0);
 }

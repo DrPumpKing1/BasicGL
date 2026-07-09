@@ -7,14 +7,14 @@
 #include "../VertexConfiguration.h"
 
 template <typename ShapeT>
-concept HasConstructMesh = requires (ShapeT shape, VertexConfig vertexConfig) {
+concept HasConstructMesh = requires (const ShapeT &shape, const VertexConfig &vertexConfig) {
     { shape.ConstructMesh(vertexConfig) } -> std::same_as<MeshData>;
 };
 
 template <typename ShapeT>
 requires HasConstructMesh<ShapeT>
-MeshHandle InstantiateMesh(const ShapeT &shape, VertexConfig vertexConfig) {
+MeshHandle InstantiateMesh(const ShapeT &shape, const VertexConfig &vertexConfig) {
     MeshData meshData = shape.ConstructMesh(vertexConfig);
-    MeshHandle meshHandle = MeshGeneration::Generate(meshData);
+    MeshHandle meshHandle = Mesh::Generate(meshData);
     return meshHandle;
 };

@@ -9,13 +9,18 @@ struct AttributeData {
 };
 
 struct MeshData {
-    const std::vector<AttributeData> &attributes;
-    const std::vector<float> &vertices;
-    const std::vector<unsigned int> &indices;
+    std::vector<AttributeData> attributes;
+    std::vector<float> vertices;
+    std::vector<unsigned int> indices;
+};
+
+struct DrawInfo {
+    unsigned int indicesCount;
 };
 
 struct MeshHandle {
     unsigned int VBO, VAO, EBO;
+    DrawInfo drawInfo;
 };
 
 class Mesh
@@ -23,4 +28,7 @@ class Mesh
 public:
     static MeshHandle Generate(const MeshData &mesh);
     static void Destroy(const MeshHandle &handle);
+
+    static void Bind(const MeshHandle &handle);
+    static void Unbind();
 };

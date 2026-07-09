@@ -28,6 +28,7 @@ SET(MESH
     "src/Backend/Mesh/Primitives/Sphere.cpp"
     "src/Backend/Mesh/Mesh.h"
     "src/Backend/Mesh/Mesh.cpp"
+    "src/Backend/Mesh/VertexConfiguration.h"
 )
 
 SET(SHADER
@@ -39,10 +40,16 @@ SET(SHADER
     "src/Backend/Shader/ShaderUniformTable.cpp"
 )
 
+SET(CAMERA
+    "src/Backend/Camera/Camera.h"
+    "src/Backend/Camera/Camera.cpp"
+)
+
 SET(SOURCE 
     ${FILESYSTEM}
     ${MESH}
     ${SHADER}
+    ${CAMERA}
     "src/main.cpp"
 )
 

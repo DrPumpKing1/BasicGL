@@ -1,7 +1,6 @@
 #include "Sphere.h"
 
-const MeshData Sphere::ConstructMesh(const VertexConfig &vertexConfig)
-{
+MeshData Sphere::ConstructMesh(const VertexConfig &vertexConfig) const {
     std::vector<AttributeData> attribData;
     VertexConfigUtils::SetAttributeData(attribData, vertexConfig);
 
@@ -18,8 +17,8 @@ const MeshData Sphere::ConstructMesh(const VertexConfig &vertexConfig)
 
         for (int seg = 0; seg <= segments; seg++)
         {
-            float u = static_cast<float>(ring) / static_cast<float>(rings);
-            float phi = u * M_PI;
+            float u = static_cast<float>(seg) / static_cast<float>(segments);
+            float phi = u * 2.0f * M_PI;
 
             float sinPhi = std::sin(phi);
             float cosPhi = std::cos(phi);
@@ -99,12 +98,12 @@ const MeshData Sphere::ConstructMesh(const VertexConfig &vertexConfig)
             int next = current + rows;
 
             indices.push_back(current);
-            indices.push_back(next);
             indices.push_back(current + 1);
+            indices.push_back(next);
 
             indices.push_back(current + 1);
-            indices.push_back(next);
             indices.push_back(next + 1);
+            indices.push_back(next);
         }
     }
 

@@ -4,7 +4,8 @@ ShaderHandle Shader::Generate(const std::string &path, ShaderType type) {
     ShaderHandle handle;
     handle.type = type;
 
-    const char* source = FileReader::ReadFile(path).c_str();
+    std::string text = FileReader::ReadFile(path);
+	const char* source = text.c_str();
     handle.ID = glCreateShader(ShaderTypeToGL(type));
     glShaderSource(handle.ID, 1, &source, nullptr);
     glCompileShader(handle.ID);
